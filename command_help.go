@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func callbackHelp() error {
+func callbackHelp(cfg *config) error {
 
 	fmt.Println("Here are you available commands:")
 	availableCommands := getCommands()
