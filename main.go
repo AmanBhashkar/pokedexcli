@@ -1,16 +1,22 @@
 package main
 
-import "github.com/AmanBhashkar/pokedexcli/internal/pokeapi"
+import (
+	"time"
+
+	"github.com/AmanBhashkar/pokedexcli/internal/pokeapi"
+)
 
 type config struct {
 	pokeapiClient       pokeapi.Client
 	nextLocationAreaURL *string
 	prevLocationAreaURL *string
+	caughtPokemon       map[string]pokeapi.Pokemon
 }
 
 func main() {
 	cfg := config{
-		pokeapiClient: pokeapi.NewClient(),
+		pokeapiClient: pokeapi.NewClient(time.Hour),
+		caughtPokemon: make(map[string]pokeapi.Pokemon),
 	}
 	startRepl(&cfg)
 }
